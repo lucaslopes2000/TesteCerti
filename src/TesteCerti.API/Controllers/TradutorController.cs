@@ -28,7 +28,12 @@ namespace TesteCerti.API.Controllers
                 };
             }else{
                 string strNumber = number.ToString("00000");
-
+                
+                if (strNumber.Substring(0,1) == "-") {
+                    name += "menos ";
+                    strNumber = strNumber.Remove(0,1);
+                }
+                
                 for (int n = 0; n <= 4; n++) {
                     if (n == 0){
                         name += StrDezena(strNumber.Substring(n,1));
@@ -60,7 +65,7 @@ namespace TesteCerti.API.Controllers
                     if (n == 2) {
                         if (name != string.Empty & strNumber.Substring(n,1) != "0") name += "e ";
 
-                        name += StrCentena(strNumber.Substring(n,1));                       
+                        name += StrCentena(strNumber.Substring(n,1), strNumber.Substring(n+1,1), strNumber.Substring(n+2,1));                       
                     };
 
                     if (n == 3) {
@@ -81,7 +86,7 @@ namespace TesteCerti.API.Controllers
                         }
                     };
                 };
-
+                
                 return new Tradutor() {
                     Extenso = name
                 };
@@ -137,13 +142,13 @@ namespace TesteCerti.API.Controllers
             return str;
         }
 
-        public static string StrCentena (string position) {
+        public static string StrCentena (string position, string position2, string position3) {
             string str = string.Empty;
 
             if (position == "0") str += string.Empty;
             else if (position == "1") {
-                if (position + 1 != "0" | position + 2 != "0") str += "cento ";
-                else str += "cem ";
+                if (position2 == "0" & position3 == "0") str += "cem ";
+                else str += "cento ";
             }
             else if (position == "2") str += "duzentos ";
             else if (position == "3") str += "trezentos ";
