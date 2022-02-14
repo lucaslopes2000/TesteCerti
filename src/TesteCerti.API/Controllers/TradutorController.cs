@@ -22,23 +22,29 @@ namespace TesteCerti.API.Controllers
         {
             string name = string.Empty;
 
+            //Verifica se o número está dentro do tamanho permitido
             if (number > 99999 | number < -99999){
                 return new Tradutor() {
                     Extenso = "Esse numero não é permitido!"
                 };
             }else{
+                //Torna o numero para uma string
                 string strNumber = number.ToString("00000");
                 
+                //Verifica se o número é negativo
                 if (strNumber.Substring(0,1) == "-") {
                     name += "menos ";
                     strNumber = strNumber.Remove(0,1);
                 }
                 
                 for (int n = 0; n <= 4; n++) {
+
+                    //Verifica primeiro algorismo
                     if (n == 0){
                         name += StrDezena(strNumber.Substring(n,1));
                     };
                     
+                    //Verifica segundo algorismo
                     if (n == 1) {
                         if (strNumber.Substring(n-1,1) == "0") {
                             if (strNumber.Substring(n,1) == "0") name += string.Empty;
@@ -62,18 +68,21 @@ namespace TesteCerti.API.Controllers
                         };
                     };
                     
+                    //Verifica terceiro algorismo
                     if (n == 2) {
                         if (name != string.Empty & strNumber.Substring(n,1) != "0") name += "e ";
 
                         name += StrCentena(strNumber.Substring(n,1), strNumber.Substring(n+1,1), strNumber.Substring(n+2,1));                       
                     };
 
+                    //Verifica quarto algorismo
                     if (n == 3) {
                         if (name != string.Empty & strNumber.Substring(n,1) != "0") name += "e ";
                       
                         name += StrDezena(strNumber.Substring(n,1));
                     };
 
+                    //Verifica quinto algorismo
                     if (n == 4) {
                         if (strNumber.Substring(n-1,1) == "1") {
                             name += StrDezenaEspecial(strNumber.Substring(n,1));
