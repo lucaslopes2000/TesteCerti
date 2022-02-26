@@ -8,13 +8,13 @@ A aplicação foi desenvolvida em .NET e o código principal da aplicação se e
 ### Verificar as suas instalações
 Para rodar a aplicação você precisa ter:
 
-git
+- **git** -> [Instalar](https://git-scm.com/downloads)
 
-.Net sdk 5.0.102 (especificamente)
+- **.Net sdk** 5.0.102 (especificamente) -> [Instalar](https://dotnet.microsoft.com/en-us/download/dotnet/5.0)
 
-node 14.17.6 ou maior
+- **node** 14.17.6 ou maior -> [Instalar](https://nodejs.org/pt-br/)
 
-npm 6.14.15 ou maior
+- **npm** 6.14.15 ou maior -> [Instalar](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ### Clonar o repositório
 No diretório de sua escolha digite o comando:
